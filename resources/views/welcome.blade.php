@@ -10,6 +10,11 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
-        test
+        <div id="app">
+            <div class="container">
+                <articles></articles>
+            </div>
+        </div>
+        <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>
