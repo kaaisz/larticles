@@ -1,7 +1,8 @@
 <template>
     <div>
         <h2>Articles</h2>
-        <form class="mb-3" action="submit">
+        <!-- trigger submit with prevent default -->
+        <form class="mb-3" @submit.prevent="addArticle()">
             <div class="form-group">
                 <!-- bind data below by using v-model -->
                 <input type="text"
@@ -114,6 +115,31 @@
                         this.fetchArticles();
                     })
                     .catch(err => console.log(err));
+                }
+            },
+            addArticle() {
+                if(this.edit === false) {
+                    // Add article
+                    fetch('api/article', {
+                        // post data as json file
+                        method: 'post',
+                        // needs to convert to json data before it appear as an article
+                        body: JSON.stringify(this.article),
+                        headers: {
+                            'content-type': 'application/json'
+                        }
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        // reset state
+                        this.article.title = "";
+                        this.article.body = "";
+                        // pass the data to fetch articles
+                        this.fetchArticles();
+                    })
+                    .catch(err => console.log(err));
+                } else {
+                    // Update article
                 }
             }
         }
