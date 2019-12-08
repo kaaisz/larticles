@@ -146,6 +146,21 @@
                     .catch(err => console.log(err));
                 } else {
                     // Update article
+                    fetch('api/article', {
+                        // put data as json file - same way except method: replace with PUT
+                        method: 'put',
+                        body: JSON.stringify(this.article),
+                        headers: {
+                            'content-type': 'application/json'
+                        }
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        this.article.title = "";
+                        this.article.body = "";
+                        this.fetchArticles();
+                    })
+                    .catch(err => console.log(err));
                 }
             },
             editArticle(article) {
