@@ -13,7 +13,7 @@ yarn-error.log
 
 /.history/*
 /public/mix-manifest.json
-/public/css
-/public/js
+/public/css/*
+/public/js/*
 
 package-lock.json
