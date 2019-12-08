@@ -51,10 +51,16 @@
             <h3>{{ article.title }}</h3>
             <p>{{ article.body }}</p>
             <hr>
-            <button class="btn btn-danger"
-                    @click="deleteArticle(article.id)">
-                <i class="fas fa-trash-alt"></i> Delete
-            </button>
+            <div class="">
+                <button class="btn btn-primary"
+                        @click="editArticle(article)">
+                    <i class="fas fa-edit"></i> Edit
+                </button>
+                <button class="btn btn-danger"
+                        @click="deleteArticle(article.id)">
+                    <i class="fas fa-trash-alt"></i> Delete
+                </button>
+            </div>
         </div>
     </div>
 </template>
@@ -141,6 +147,20 @@
                 } else {
                     // Update article
                 }
+            },
+            editArticle(article) {
+                // editarticle takes entire parameter
+                // update state data.edit to true
+                this.edit = true;
+
+                // take every data
+                console.log(this.article);
+                this.article.id = article.id;
+                this.article.article_id = article.id;
+                this.article.title = article.title;
+                this.article.body = article.body;
+
+                // update data
             }
         }
     };
