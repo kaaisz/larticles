@@ -1,6 +1,24 @@
 <template>
     <div>
         <h2>Articles</h2>
+        <form class="mb-3" action="submit">
+            <div class="form-group">
+                <!-- bind data below by using v-model -->
+                <input type="text"
+                        class="form-control"
+                        placeholder="Title"
+                        v-model="article.title">
+            </div>
+            <div class="form-group">
+                <!-- bind data below by using v-model -->
+                <textarea type="text"
+                        class="form-control"
+                        placeholder="Add article body"
+                        v-model="article.body">
+                </textarea>
+            </div>
+            <button type="submit" class="btn btn-light btn-block">Save</button>
+        </form>
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <!-- if previous url is null -->
