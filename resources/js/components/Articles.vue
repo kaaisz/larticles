@@ -13,6 +13,11 @@
                         &laquo; Previous
                     </a>
                 </li>
+                <li class="page-item disabled">
+                    <a class="page-link text-dark" href="#">
+                        Page {{ pagination.current_page }} of {{ pagination.last_page }}
+                    </a>
+                </li>
                 <li v-bind:class="[{ disabled: !pagination.next_page_url }]"
                     class="page-item">
                     <a class="page-link"
@@ -58,7 +63,7 @@
                     // map to json
                     .then(res => res.json())
                     .then(res => {
-                        // console.log(res.data, res.meta, res.links);
+                        console.log(res.data, res.meta, res.links);
                         this.articles = res.data;
                         vm.makePagination(res.meta, res.links);
                 })
@@ -70,7 +75,7 @@
                     current_page: meta.current_page,
                     last_page: meta.last_page,
                     next_page_url: links.next,
-                    prev_page_url: links.prev
+                    prev_page_url: links.prev,
                 };
                 // console.log(pagination);
                 this.pagination = pagination;
